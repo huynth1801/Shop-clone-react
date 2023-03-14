@@ -1,0 +1,11 @@
+.hero__section {
+    background-color: var(--hero-bg);
+}
+
+.hero__content p:first-child{
+    color: #dcb14a;
+}
+
+.time__counter {
+    background-color: var(--primary-color);
+}

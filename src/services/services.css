@@ -1,0 +1,7 @@
+.service__item {
+    /* background-color: var(--card-bg-01); */
+}
+
+.service__item > span {
+    background-color: var(--primary-color);
+}
