@@ -4,6 +4,7 @@ import { BsCart3 } from "react-icons/bs";
 import "./Header.css";
 import { AiOutlineHeart, AiOutlineUser, AiOutlineMenu } from "react-icons/ai";
 import { useRef, useEffect } from "react";
+import { useSelector } from "react-redux";
 
 const nav__links = [
   {
@@ -23,6 +24,8 @@ const nav__links = [
 const Header = () => {
   const headerRef = useRef(null);
   const menuRef = useRef(null);
+
+  const totalQuantity = useSelector((state) => state.cart.totalQuantity);
 
   const stickyHeaderFunc = () => {
     window.addEventListener("scroll", () => {
@@ -85,8 +88,9 @@ const Header = () => {
             <span className="heart__icon">
               <AiOutlineHeart className="hover:text-[#DCB14A]" />
             </span>
-            <span className="cart__icon">
+            <span className="cart__icon ">
               <BsCart3 className="hover:text-[#DCB14A]" />
+              <span className="badge">{totalQuantity}</span>
             </span>
             <span className="user__icon">
               <AiOutlineUser className="hover:text-[#DCB14A]" />

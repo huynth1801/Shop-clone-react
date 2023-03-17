@@ -1,0 +1,25 @@
+.filter__widget select {
+    padding: 8px 8px;
+    border: 1px solid var(--primary-color);
+    border-radius: 5px;
+}
+
+.filter__widget select option {
+    font-size: 0.9rem;
+}
+
+.search__box {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--primary-color);
+    border-radius: 5px;
+}
+
+.search__box input {
+    width: 100%;
+    border: none;
+    outline: none;
+    padding: 8px 10px;
+}

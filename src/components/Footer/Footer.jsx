@@ -32,7 +32,7 @@ const Footer = () => {
             <li className="pb-2">Tổng đài hỗ trợ (Miễn phí gọi)</li>
             <li className="pb-2">
               <span>Gọi mua: </span>
-              <a href="tel:+1800.1000" className="text-blue-600 font-bold">
+              <a href="tel:+1800.1000" className="text-blue-600 font-bolds">
                 1800.1000
               </a>{" "}
               (7:30 - 22:00)
