@@ -12,3 +12,15 @@
 .tab__content p {
     line-height: 30px;
 }
+
+.form__group input, textarea{
+    width: 100%;
+    border: 1px solid var(--primary-color);
+    border-radius: 5px;
+    padding: 8px 20px;
+}
+
+
+.forn__group input:focus, .form__group textarea:focus {
+    outline: none;
+}

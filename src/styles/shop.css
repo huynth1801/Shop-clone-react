@@ -4,9 +4,10 @@
     border-radius: 5px;
 }
 
-.filter__widget select option {
+/* .filter__widget select option {
     font-size: 0.9rem;
-}
+    outline: none;
+} */
 
 .search__box {
     display: flex;

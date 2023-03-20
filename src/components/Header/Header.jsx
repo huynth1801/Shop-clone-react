@@ -1,5 +1,5 @@
 import logo from "../../assets/images/dark-logo.png";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { BsCart3 } from "react-icons/bs";
 import "./Header.css";
 import { AiOutlineHeart, AiOutlineUser, AiOutlineMenu } from "react-icons/ai";
@@ -24,6 +24,7 @@ const nav__links = [
 const Header = () => {
   const headerRef = useRef(null);
   const menuRef = useRef(null);
+  const navigate = useNavigate();
 
   const totalQuantity = useSelector((state) => state.cart.totalQuantity);
 
@@ -47,6 +48,11 @@ const Header = () => {
   });
 
   const menuToggle = () => menuRef.current.classList.toggle("active__menu");
+
+  const navigateToCart = () => {
+    navigate("/cart");
+  };
+
   return (
     <header
       className="w-full h-[60px] relative px-8 leading-[70px] my-4 md:h-[70px] items-center"
@@ -87,8 +93,9 @@ const Header = () => {
           >
             <span className="heart__icon">
               <AiOutlineHeart className="hover:text-[#DCB14A]" />
+              <span className="heart__number">0</span>
             </span>
-            <span className="cart__icon ">
+            <span className="cart__icon" onClick={navigateToCart}>
               <BsCart3 className="hover:text-[#DCB14A]" />
               <span className="badge">{totalQuantity}</span>
             </span>

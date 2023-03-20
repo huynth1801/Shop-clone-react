@@ -3,11 +3,14 @@ import products from "../assets/data/product";
 import Helmet from "../components/Helmet/Helmet";
 import CommonSection from "../UI/CommonSection";
 import { BsStarFill, BsStarHalf } from "react-icons/bs";
+import { FaStar } from "react-icons/fa";
 import { useState } from "react";
 import "../styles/product-detail.css";
+import ProductLists from "../UI/ProductLists";
 
 const ProductDetails = () => {
   const [tab, setTab] = useState("desc");
+  const [rating, setRating] = useState(null);
   const { id } = useParams();
   const product = products.find((item) => item.id === id);
   const {
@@ -17,8 +20,11 @@ const ProductDetails = () => {
     avgRating,
     reviews,
     description,
+    category,
     shortDesc,
   } = product;
+
+  const relatedProducts = products.filter((item) => item.category === category);
   return (
     <Helmet>
       <CommonSection />
@@ -59,7 +65,7 @@ const ProductDetails = () => {
 
                 <button
                   className="buy__btn border border-solid 
-                                  py-2 px-4 rounded bg-black 
+                                  py-2 px-4 rounded-lg bg-black 
                                   text-white mt-8 hover:scale-105"
                 >
                   Add to Cart
@@ -83,7 +89,7 @@ const ProductDetails = () => {
                 </div>
                 <div
                   className={`${tab === "rev" ? "active__tab" : ""}`}
-                  onClick={() => setTab("desc")}
+                  onClick={() => setTab("rev")}
                 >
                   Reviews ({reviews.length})
                 </div>
@@ -91,12 +97,88 @@ const ProductDetails = () => {
 
               {tab === "desc" ? (
                 <div className="tab__content mt-5">
-                  <p>{description}</p>
+                  <p className="font-thin text-zinc-500">{description}</p>
                 </div>
               ) : (
-                <div>reviews</div>
+                <div className="product__review mt-4">
+                  <div className="review__wrapper">
+                    <ul>
+                      {reviews?.map((item, index) => (
+                        <li key={index}>
+                          <p>Huu Huy</p>
+                          <span className="font-semibold text-yellow-500">
+                            {item.rating} (ratings)
+                          </span>
+                          <p className="mt-2 text-zinc-500">{item.text}</p>
+                        </li>
+                      ))}
+                    </ul>
+
+                    <div className="review__form w-9/12 mt-8">
+                      <form action="">
+                        <div className="form__group">
+                          <input type="text" placeholder="Enter name ..." />
+                        </div>
+                        <div className="form__group flex gap-5 w-full py-4 text-yellow-500 cursor-pointer">
+                          <span
+                            className="flex items-center"
+                            onClick={() => setRating(1)}
+                          >
+                            <FaStar />
+                          </span>
+                          <span
+                            className="flex items-center"
+                            onClick={() => setRating(2)}
+                          >
+                            <FaStar />
+                          </span>
+                          <span
+                            className="flex items-center"
+                            onClick={() => setRating(3)}
+                          >
+                            <FaStar />
+                          </span>
+                          <span
+                            className="flex items-center"
+                            onClick={() => setRating(4)}
+                          >
+                            <FaStar />
+                          </span>
+                          <span
+                            className="flex items-center"
+                            onClick={() => setRating(5)}
+                          >
+                            <FaStar />
+                          </span>
+                        </div>
+
+                        <div className="form__group">
+                          <textarea
+                            rows={4}
+                            type="text"
+                            placeholder="Review message ..."
+                          />
+                        </div>
+                        <button
+                          className="border border-solid 
+                                  py-2 px-4 rounded bg-black 
+                                  text-white mt-8"
+                        >
+                          Submit
+                        </button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
               )}
             </div>
+
+            <div>
+              <h2 className="related__title text-2xl ml-[50px] mt-8">
+                You might also like
+              </h2>
+            </div>
+            <ProductLists data={relatedProducts} />
           </div>
         </div>
       </section>

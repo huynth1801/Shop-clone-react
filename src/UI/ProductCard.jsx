@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { cartActions } from "../components/redux/slices/cartSlice";
 import { toast } from "react-toastify";
+import { useState, useEffect } from "react";
 
 const ProductCard = ({ item }) => {
   const dispatch = useDispatch();
@@ -14,11 +15,12 @@ const ProductCard = ({ item }) => {
         id: item.id,
         productName: item.productName,
         price: item.price,
-        image: item.imgUrl,
+        imgUrl: item.imgUrl,
       })
     );
 
     toast.success("Product is added to cart");
+    localStorage.setItem("items", JSON.stringify(item));
   };
 
   return (

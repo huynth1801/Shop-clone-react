@@ -6,6 +6,7 @@ import "../styles/shop.css";
 import { useState } from "react";
 import products from "../assets/data/product.js";
 import ProductLists from "../UI/ProductLists";
+import BackToTopButton from "../components/BackToTopButton.jsx";
 
 const Shop = () => {
   const [productsData, setProductsData] = useState(products);
@@ -54,7 +55,7 @@ const Shop = () => {
       <CommonSection title="Product" />
       <section>
         <div>
-          <div className="md:grid md:grid-cols-3 md:gap-4 px-8 py-8">
+          <div className="md:grid md:grid-cols-3 md:gap-2 px-8 pt-8">
             <div className="filter__widget pb-4 md:pb-0">
               <select name="" id="" onChange={handleFilter}>
                 <option value="">Filter by Category</option>
@@ -102,6 +103,7 @@ const Shop = () => {
           </div>
         </div>
       </section>
+      <BackToTopButton />
     </Helmet>
   );
 };
